@@ -44,7 +44,7 @@ int count(node *head)
 }
 
 /*them mot node vao dau danh sach
-* do ban than la mot con tro, thi de c� the thay doi thi
+* do ban than la mot con tro, thi de c� the thay doi thi
 * can truyen tham chieu nen can 1 con tro 2 sao
 */
 void pushFront (node **head, int x)  //day laf ham truyen tham tri
@@ -197,6 +197,29 @@ void erase (node **head, int k)
 		
 		free(kth);
 	
+	}
+}
+
+// sắp xếp danh sách liên kết
+// chi thay doi data cac node, k thay doi vij tri cua node
+void sapxep (node **head){
+	node *i;
+	i = *head;
+	for ( ; i != NULL ; i = i->next)
+	{
+		node *minNode = i;
+		node *j;
+		for (j = i->next ; j != NULL ; j = j->next)
+		{
+			if ( (minNode->data) > (j->data))
+			{
+				minNode = j;
+			}
+		}
+
+		int temp = minNode->data;
+		minNode->data = i->data;
+		i->data = temp;
 	}
 }
 
