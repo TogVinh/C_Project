@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 typedef struct employee{
-	char ID[100];
+	int ID;
 //	char Full_Name[100];
 //	char Department[100];
 	int Salary;
@@ -13,7 +13,6 @@ typedef struct employee{
 //	int year;
 }Employee;
 
-struct List_Emp;
 //typedef struct List_Emp node;
 
 struct List_Emp
@@ -22,7 +21,9 @@ struct List_Emp
 	struct List_Emp *next; //dung de link, day la cau truc tu tro
 };
 
-typedef struct List_Emp node;; // not goc cua list
+typedef struct List_Emp node; // not goc cua list
+
+//node g_head_list;
 
 void init(node **A){
 	*A = NULL;
@@ -57,20 +58,24 @@ node *createNode()
 //	gets( (*emp).Emp.Full_Name );
 	
 	printf("Nhap ID nhan vien :  ");
-	fflush(stdin);
-	gets( emp->Emp.ID );
+	//fflush(stdin);
+	//gets( emp->Emp.ID );
+    scanf("%d", &emp->Emp.ID );
 	
 //	printf("Nhap don vi : ");
 //	gets( (*emp).Emp.Department );
 	
 	printf("Nhap luong : ");
-	scanf("%d",&(emp->Emp.Salary));
+	scanf("%d",&emp->Emp.Salary);
 	
 //	printf("Nhap ngay thang nam vao cong ty ");
 //	scanf("%d %d %d ", &(*emp).Emp.day, &(*emp).Emp.month, &(*emp).Emp.year);
 	
 	return emp;
 }
+
+
+
 
 void Insert_Frist(node **A, node *P){
 	if (*A == NULL)
@@ -87,7 +92,9 @@ void Insert_Frist(node **A, node *P){
 // nhap danh sach nhan vien
 void Input(node **A)
 {
-	int num;
+	int num = 0;//
+	int i = 0;//
+
 	printf("Nhap so luong nhan vien : ");
 	
 	do{
@@ -99,11 +106,12 @@ void Input(node **A)
 		}
 	}while(num <0 || num > 50);
 	
-	int i;
+
 	for(i = 0 ; i<num ; i++)
 	{
 		node *new = createNode();
 		Insert_Frist(A, new);
+		//free(new);
 	}
 }
 
@@ -111,7 +119,7 @@ void Output( node *A )
 {
 	while(A != NULL)
 	{
-		printf("\nID         :  %s",A->Emp.ID);
+		printf("\nID         :  %d",A->Emp.ID);
 //		printf("\nName       :  %s",A->Emp.Full_Name);
 //		printf("\nDepartment :  %s",A->Emp.Department);
 		printf("\nSalary     :  %d",A->Emp.Salary);
@@ -124,7 +132,8 @@ void Output( node *A )
 
 
 //sap xep 
-void sapxep(node **A)
+/*
+node sapxep(node **A )
 {
 	node *i;
 	//i = *A;
@@ -134,8 +143,10 @@ void sapxep(node **A)
 		node *j;
 		for (j = i->next ; j != NULL ; j = j->next)
 		{
-			node *temp;
-			if(j->Emp.Salary < minSalary->Emp.Salary)
+			//node *temp;
+			
+			// segment fault
+			if(minSalary->Emp.Salary < j->Emp.Salary)
 			{
 				minSalary->Emp = j->Emp;
 			}
@@ -146,6 +157,79 @@ void sapxep(node **A)
 		i->Emp = temp;
 		
 	}
+	
+	return *i;
+}*/
+
+void sapxep(node **head)
+
+{
+
+	node *current = NULL;
+
+	node *index = NULL;
+
+	int temp = 0;
+
+
+
+	if (*head == NULL)
+
+	{
+
+		printf("empty list\n");
+
+		return;
+
+	}
+
+	else
+
+	{
+
+		printf("NON-EMPTY list\n");
+
+		current = *head;
+
+		while (current != NULL)
+
+		{
+
+			// Node index will point to node next to current
+
+			index = current->next;
+
+
+			while (index != NULL)
+
+			{
+
+				// If current node's data is greater than index's node data, swap the data between them
+
+				if (current->Emp.Salary > index->Emp.Salary)
+
+				{
+
+					temp = current->Emp.Salary;
+
+					current->Emp.Salary = index->Emp.Salary;
+
+					index->Emp.Salary  = temp;
+
+				}
+
+				index = index->next;
+
+			}
+
+			current = current->next;
+
+		}
+
+	}
+
+	printf("finish sorting\n");
+
 }
 
 int main()
@@ -155,37 +239,13 @@ int main()
 	Input(&A);
 	printf("\n----------------\n");
 	
-	
 	sapxep( &A );
+	
 	printf("\n---- sap xep thuc hien thanh cong--- \n");
 	//
 	Output(A);
 	
+	free(A);
 	
-	
+	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
