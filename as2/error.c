@@ -6,15 +6,13 @@
 typedef struct Information
 {
 	int ID;
-	char Full_Name[100];
-	char Department[100];
+	char Full_Name[50];
+	char Department[50];
 	int Salary;
 	int day;
 	int month;
 	int year;
 } Info;
-
-// typedef struct List_Emp node;
 
 struct List_Emp
 {
