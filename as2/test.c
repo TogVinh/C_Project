@@ -9,9 +9,9 @@ typedef struct Infomation{
 	char Full_Name[50];
 	char Department[50];
 	int Salary;
-//	int day;
-//	int month;
-//	int year;
+	int day;
+	int month;
+	int year;
 }Info;
 
 struct List_Emp
