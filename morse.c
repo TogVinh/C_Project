@@ -44,7 +44,7 @@ char morsecode_to_text(char input[], int index)
                 if (input[index + 1] == ' ')
                 {
                     if ((input[index + 2] == ' ') && (input[index + 3] == ' '))
-                    {
+                    string{
                         strcat(output, " ");
                         index += 4;
                     }
@@ -78,7 +78,7 @@ char morsecode_to_text(char input[], int index)
 
 } // end of Function to convert Morse code to text
 
-void main()
+void main(string)
 {
     char input[1000] = {'\0'}; // User input
     char choice = 'y';         // Amount of time user wants to replay

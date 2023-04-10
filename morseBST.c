@@ -1,15 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char dot =  '.' ;
+char dash = '-';
+
 typedef struct Data
 {
-    char characters[50] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+    char characters[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
                           "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 
     char morsecode[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-",
                          ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....",
                          "--...", "---..", "----.", "-----"};
 }data_t;
+
+
 
 struct Node
 {
@@ -31,35 +36,46 @@ void Free(node_t *root)
     free(root);
 }
 
-// đi về node trái của cây
-// int LeftOf(const int value, const node_t *root)
-// {
-//     // Nếu bạn muốn cây BST cho phép giá trị trùng lặp, hãy sử dụng dòng code thứ 2
-//     return value < root->data;
-//     //    return value <= root->data;
-// }
+// if is dot, move to the left
+int LeftOf(  )
+{
+    return ;
+}
 
-// // đi về node phải của cây
-// int RightOf(const int value, const node_t *root)
-// {
-//     return value > root->data;
-// }
+// if is dash, mofe to the right
+int RightOf(  )
+{
+    return;
+}
 
-// char g_code[37][10] = {
-//     {".-a"}   , {"-...b"} , {"-.-.c"} , {"-..d"}, {".e"} , 
-//     {"..-.f"} , {"--.g"}  , {"....h"} , {"..i"} , {".---j"}, 
-//     {"-.-k"}  , {".-..l"} , {"--m"}   , {"-.n"} , 
-//     {"---o"}  , {".--.p"} , {"--.-q"} , {".-.r"}, {"...s"},
-//     {"-t"}    , {"..-u"}  , {"...-v"} , {".--w"}, {"-..-x"},
-//     {"-.--y"} , {"--..z"} ,
-//     {".----1"}, {"..---2"},{"...--3"},{"....-4"},{".....5"},
-//     {"-....6"}, {"--...7"},{"---..8"}, {"----.9"}, {"-----0"},
-//     " /"
-// };
 
-// char characters[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-//                           "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+// add to the tree
+node_t* Insert( node_t* root, data_t data )
+{
+    if ( root == NULL )
+    {
+        node_t* node = (node_t*)malloc( sizeof( node_t ) );
+        node->left = NULL;
+        node->right = NULL;
+        node->data = value;
+        return node;
+    }
 
-// char morsecode[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-",
-//                          ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....",
-//                          "--...", "---..", "----.", "-----"};
+    while ( data.morsecode != '\0')
+    {
+        if ( LeftOf() )
+    }
+    if ( LeftOf( value, root ) ) // neu gia tri them la be hon
+        root->left = Insert( root->left, value ); // de quy de insert
+    else if ( RightOf( value, root ) )
+        root->right = Insert( root->right, value ); // de uy de insert vao ben phai
+    return root;
+}
+
+
+
+
+int main()
+{
+    
+}
